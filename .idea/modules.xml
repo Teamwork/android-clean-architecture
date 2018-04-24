@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/sample-app-core/sample-app-core.iml" filepath="$PROJECT_DIR$/sample-app-core/sample-app-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/sample-app-feature1/sample-app-feature1.iml" filepath="$PROJECT_DIR$/sample-app-feature1/sample-app-feature1.iml" />
       <module fileurl="file://$PROJECT_DIR$/sample-business/sample-business.iml" filepath="$PROJECT_DIR$/sample-business/sample-business.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sample-business-injection/sample-business-injection.iml" filepath="$PROJECT_DIR$/sample-business-injection/sample-business-injection.iml" />
     </modules>
   </component>
 </project>

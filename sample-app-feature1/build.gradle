@@ -2,7 +2,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion project.ext.sharedCompileSdkVersion
@@ -37,10 +36,8 @@ dependencies {
 
     // unit test dependencies
     testImplementation "junit:junit:${versions.junit}"
-    testImplementation "org.robolectric:robolectric:${versions.robolectric}"
 
     // android instrumentation test dependencies
-    androidTestImplementation "com.android.support:support-annotations:${versions.supportLibrary}"
     androidTestImplementation "com.android.support.test:runner:${versions.supportTest}"
     androidTestImplementation "com.android.support.test:rules:${versions.supportTest}"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:${versions.espressoCore}"

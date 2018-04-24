@@ -1,1 +1,1 @@
-include ':sample-app', ':sample-app-core', ':sample-app-feature1', ':sample-business'
+include ':sample-app', ':sample-app-core', ':sample-app-feature1', ':sample-business', ':sample-business-injection'

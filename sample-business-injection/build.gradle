@@ -31,9 +31,12 @@ android {
 dependencies {
     // third party dependencies
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
-    api "com.android.support:appcompat-v7:${versions.supportLibrary}"
 
     // internal dependencies
+
+    //implementation project(':projects-data-access')
+    // non-transitive dependency so that any sample-data dependencies won't be available in sample-business
+    //implementation project(':projects-data')
 
     // unit test dependencies
     testImplementation "junit:junit:${versions.junit}"

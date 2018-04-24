@@ -33,6 +33,7 @@ dependencies {
     // third party dependencies
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
 
+    api "com.android.support:support-annotations:${versions.supportLibrary}"
     api "com.android.support:appcompat-v7:${versions.supportLibrary}"
     api "com.android.support:design:${versions.supportLibrary}"
     api "com.android.support.constraint:constraint-layout:${versions.constraintLayout}"
@@ -42,7 +43,6 @@ dependencies {
 
     // unit test dependencies
     testImplementation "junit:junit:${versions.junit}"
-    testImplementation "org.robolectric:robolectric:${versions.robolectric}"
 
     // android instrumentation test dependencies
     androidTestImplementation "com.android.support:support-annotations:${versions.supportLibrary}"
