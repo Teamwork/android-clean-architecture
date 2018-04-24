@@ -1,0 +1,19 @@
+*.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+
+# Markdown Navigator
+.idea/markdown-exported-files.xml
+
+# custom dictionaries
+.idea/dictionaries/
+.idea/caches/
+
+# Kotlin!
+.idea/kotlinc.xml
