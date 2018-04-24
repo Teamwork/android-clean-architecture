@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity
 import com.teamwork.android.samples.clean.feature1.R
 import javax.inject.Inject
 
+/**
+ * TODO: handle Dagger injection with a Subcomponent in the feature module
+ */
 class Feature1DetailsActivity : AppCompatActivity(), Feature1DetailsView {
 
     @Inject

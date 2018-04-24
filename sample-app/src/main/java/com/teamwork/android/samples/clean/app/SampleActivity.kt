@@ -5,12 +5,26 @@ import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import com.teamwork.android.samples.clean.feature1.detail.Feature1DetailsPresenter
+import com.teamwork.android.samples.clean.feature1.detail.Feature1DetailsView
+import com.teamwork.android.samples.clean.feature1.list.Feature1ListPresenter
+import com.teamwork.android.samples.clean.feature1.list.Feature1ListView
 import kotlinx.android.synthetic.main.activity_sample.*
+import javax.inject.Inject
 
-class SampleActivity : AppCompatActivity() {
+class SampleActivity : AppCompatActivity(), Feature1ListView, Feature1DetailsView {
+
+    @Inject
+    lateinit var presenter: Feature1ListPresenter
+
+    @Inject
+    lateinit var detailsPresenter: Feature1DetailsPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        SampleApplication.getAppComponent().inject(this)
+
         setContentView(R.layout.activity_sample)
         setSupportActionBar(toolbar)
 
@@ -18,6 +32,15 @@ class SampleActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }
+
+        presenter.onViewCreated(this)
+        detailsPresenter.onViewCreated(this)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onViewDestroyed()
+        detailsPresenter.onViewDestroyed()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
