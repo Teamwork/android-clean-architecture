@@ -37,27 +37,21 @@ ext {
     versions = [
             // production dependencies
             butterknife       : '8.8.1',
-            circularprogress  : '2.5.0',
             constraintLayout  : '1.1.0',
             dagger            : '2.15',
-            fresco            : '1.8.1',
-            frescoProcessors  : '2.1.0',
             jsrAnnotations    : '3.0.2',
             okhttp            : '3.9.1',
             retrofit          : '2.3.0',
             room              : '1.1.0-beta2',
             rxandroid         : '2.0.2',
             rxjava            : '2.1.7',
-            stream            : '1.1.8',
             supportLibrary    : '27.1.1',
             timber            : '4.6.1',
 
             // Test dependencies
             espressoCore      : '3.0.1',
-            json              : '20170516',
             junit             : '4.12',
             mockito           : '2.15.0',
-            robolectric       : '3.5',
             supportTest       : '1.0.1'
     ]
 }

@@ -13,6 +13,8 @@
             <option value="$PROJECT_DIR$/sample-app-feature1" />
             <option value="$PROJECT_DIR$/sample-business" />
             <option value="$PROJECT_DIR$/sample-business-injection" />
+            <option value="$PROJECT_DIR$/sample-data" />
+            <option value="$PROJECT_DIR$/sample-data-access" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
