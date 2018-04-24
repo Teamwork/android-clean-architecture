@@ -1,1 +1,1 @@
-include ':sample-app'
+include ':sample-app', ':sample-app-core', ':sample-app-feature1'

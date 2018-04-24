@@ -1,14 +1,14 @@
-apply plugin: 'com.android.application'
+// apply plugin: 'com.android.feature' // use this instead of 'com.android.library' for Instant App
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion project.ext.sharedCompileSdkVersion
     buildToolsVersion project.ext.sharedBuildToolsVersion
 
     defaultConfig {
-        applicationId "com.teamwork.android.samples.clean"
-
         minSdkVersion project.ext.sharedMinSdkVersion
         targetSdkVersion project.ext.sharedTargetSdkVersion
         versionCode project.ext.appVersionCode
@@ -19,23 +19,20 @@ android {
 
     buildTypes {
         debug {
+            minifyEnabled false
             multiDexEnabled true
         }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
 }
 
 dependencies {
     implementation project(':sample-app-core')
-    implementation project(':sample-app-feature1')
 
     // unit test dependencies
     testImplementation "junit:junit:${versions.junit}"

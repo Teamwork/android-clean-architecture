@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/android-clean-architecture.iml" filepath="$PROJECT_DIR$/android-clean-architecture.iml" />
       <module fileurl="file://$PROJECT_DIR$/sample-app/sample-app.iml" filepath="$PROJECT_DIR$/sample-app/sample-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sample-app-core/sample-app-core.iml" filepath="$PROJECT_DIR$/sample-app-core/sample-app-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sample-app-feature1/sample-app-feature1.iml" filepath="$PROJECT_DIR$/sample-app-feature1/sample-app-feature1.iml" />
     </modules>
   </component>
 </project>

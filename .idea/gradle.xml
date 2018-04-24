@@ -9,6 +9,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/sample-app" />
+            <option value="$PROJECT_DIR$/sample-app-core" />
+            <option value="$PROJECT_DIR$/sample-app-feature1" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

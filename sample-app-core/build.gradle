@@ -1,14 +1,13 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion project.ext.sharedCompileSdkVersion
     buildToolsVersion project.ext.sharedBuildToolsVersion
 
     defaultConfig {
-        applicationId "com.teamwork.android.samples.clean"
-
         minSdkVersion project.ext.sharedMinSdkVersion
         targetSdkVersion project.ext.sharedTargetSdkVersion
         versionCode project.ext.appVersionCode
@@ -19,6 +18,7 @@ android {
 
     buildTypes {
         debug {
+            minifyEnabled false
             multiDexEnabled true
         }
         release {
@@ -27,15 +27,14 @@ android {
         }
     }
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
 }
 
 dependencies {
-    implementation project(':sample-app-core')
-    implementation project(':sample-app-feature1')
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
+
+    api "com.android.support:appcompat-v7:${versions.supportLibrary}"
+    api "com.android.support:design:${versions.supportLibrary}"
+    api "com.android.support.constraint:constraint-layout:${versions.constraintLayout}"
 
     // unit test dependencies
     testImplementation "junit:junit:${versions.junit}"
