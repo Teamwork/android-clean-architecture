@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/sample-business-injection" />
             <option value="$PROJECT_DIR$/sample-data" />
             <option value="$PROJECT_DIR$/sample-data-access" />
+            <option value="$PROJECT_DIR$/sample-entity" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

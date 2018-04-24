@@ -10,6 +10,7 @@
       <module fileurl="file://$PROJECT_DIR$/sample-business-injection/sample-business-injection.iml" filepath="$PROJECT_DIR$/sample-business-injection/sample-business-injection.iml" />
       <module fileurl="file://$PROJECT_DIR$/sample-data/sample-data.iml" filepath="$PROJECT_DIR$/sample-data/sample-data.iml" />
       <module fileurl="file://$PROJECT_DIR$/sample-data-access/sample-data-access.iml" filepath="$PROJECT_DIR$/sample-data-access/sample-data-access.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sample-entity/sample-entity.iml" filepath="$PROJECT_DIR$/sample-entity/sample-entity.iml" />
     </modules>
   </component>
 </project>

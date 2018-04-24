@@ -26,7 +26,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 dependencies {
@@ -40,6 +39,7 @@ dependencies {
 
     // internal dependencies
     api project(':sample-business')
+    api project(':sample-entity')
 
     // unit test dependencies
     testImplementation "junit:junit:${versions.junit}"
