@@ -34,6 +34,7 @@
       <option name="RIGHT_MARGIN" value="120" />
       <option name="KEEP_FIRST_COLUMN_COMMENT" value="false" />
       <option name="WRAP_COMMENTS" value="true" />
+      <option name="METHOD_ANNOTATION_WRAP" value="1" />
     </codeStyleSettings>
     <codeStyleSettings language="XML">
       <indentOptions>

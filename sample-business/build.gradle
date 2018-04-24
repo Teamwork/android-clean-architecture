@@ -42,6 +42,7 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
 
     // internal dependencies
+    implementation project(':sample-business-injection')
     implementation project(':sample-data-access')
     api project(':sample-entity')
 
