@@ -37,6 +37,7 @@ dependencies {
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
 
     // internal dependencies
+    api project(':sample-entity')
 
     // unit test dependencies
     testImplementation "junit:junit:${versions.junit}"

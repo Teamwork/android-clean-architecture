@@ -37,10 +37,13 @@ dependencies {
     // third party dependencies
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
 
+    api "javax.inject:javax.inject:1"
+    api "com.google.code.findbugs:jsr305:${versions.jsrAnnotations}"
     api "com.android.support:support-annotations:${versions.supportLibrary}"
     api "com.android.support:appcompat-v7:${versions.supportLibrary}"
     api "com.android.support:design:${versions.supportLibrary}"
     api "com.android.support.constraint:constraint-layout:${versions.constraintLayout}"
+
 
     // internal dependencies
     api project(':sample-business')
