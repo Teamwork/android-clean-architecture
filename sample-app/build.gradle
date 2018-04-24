@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion project.ext.sharedCompileSdkVersion
@@ -34,6 +35,12 @@ android {
 }
 
 dependencies {
+    // third party dependencies
+
+    // Dagger for Dependency Injection
+    implementation "com.google.dagger:dagger:${versions.dagger}"
+    kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
+
     // internal dependencies
     implementation project(':sample-app-core')
     implementation project(':sample-app-feature1')

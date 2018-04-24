@@ -25,12 +25,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
     // third party dependencies
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
     api "com.android.support:appcompat-v7:${versions.supportLibrary}"
+
+    // Dagger for Dependency Injection
+    implementation "com.google.dagger:dagger:${versions.dagger}"
+    kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
 
     // internal dependencies
     implementation project(':sample-data-access')
