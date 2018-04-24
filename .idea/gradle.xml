@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/sample-app" />
             <option value="$PROJECT_DIR$/sample-app-core" />
             <option value="$PROJECT_DIR$/sample-app-feature1" />
+            <option value="$PROJECT_DIR$/sample-business" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

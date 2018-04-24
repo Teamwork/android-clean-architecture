@@ -32,6 +32,7 @@ android {
 }
 
 dependencies {
+    // internal dependencies
     implementation project(':sample-app-core')
 
     // unit test dependencies
