@@ -39,6 +39,7 @@ dependencies {
 
     // Dagger for Dependency Injection
     implementation "com.google.dagger:dagger:${versions.dagger}"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
 
     // internal dependencies

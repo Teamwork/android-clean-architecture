@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.teamwork.android.samples.clean.feature1">
+          package="com.teamwork.android.samples.clean.feature1">
+
+    <application>
+        <activity android:name=".detail.Feature1DetailsActivity">
+        </activity>
+        <activity android:name=".list.Feature1ListActivity">
+        </activity>
+    </application>
+
 </manifest>

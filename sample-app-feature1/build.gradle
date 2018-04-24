@@ -39,6 +39,7 @@ dependencies {
     implementation project(':sample-app-core')
 
     // unit test dependencies
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     testImplementation "junit:junit:${versions.junit}"
 
     // android instrumentation test dependencies
