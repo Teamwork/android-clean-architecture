@@ -18,8 +18,24 @@ We came up with our solution (and we iteratively try to improve it) based on the
 - **Our applications should endure time.** We don't like technical debt, and we don't like rewriting the same software, using the same technologies, only because that code is broken.
 - **We need to scale fast and make new developers onboarding smooth.** Using a shared, well-defined architecture helps new developers in the team, who should then be able to get into the codebase faster and contribute to it from the get-go.
 
-## Modules structure
-The following diagram illustrates the main aspects of the modules structure of this sample project.
+## Modules
+Listed below, a quick description of each module and a class diagram with their relationships.
+
+### Modules description
+
+Module name | Description | Module dependencies (direct or indirect)
+------------- | ----------- | -------------------------- | -----------------------
+**sample-entity** | Business entities (the `Entity` layer in _Clean_) | _No dependencies_
+**sample-data-access** | The `Data Access` layer, interfaces for the business layer to access the data layer | `sample-entity`
+**sample-data** | The `Data ` layer, which includes networking, caching and data delivery for the business layer to manipulate. Exposes via Dagger the `DataRepo` dependencies to the business layer | `sample-data-access`, `sample-entity`
+**sample-business-injection** | Bridge module between the data and the business layer. Prevents implementation details in the data layer from being accessible in the business layer, and exposes the repositories exposed through the data access layer | `sample-data`, `sample-data-access`, `sample-entity`
+**sample-business** | Business layer, contains interactors which are then exposed to the presentation layer. | `sample-business-injection`, `sample-data-access`, `sample-entity`
+**sample-app-core** | Core, base module for the view and presentation layer. Contains themes, styles, resources, strings and components that are used across apps and feature modules. | `sample-business`, `sample-entity`
+**sample-app-feature1** | View and presentation module for a "big" feature. This can be then extracted to use with _Instant Apps_ if desired | `sample-app-core`, `sample-business`, `sample-entity`
+**sample-app** | View and presentation layers for the _application module_ | `sample-app-core`, `sample-app-feature1`, `sample-business`, `sample-entity`
+
+### Modules relationships
+The following diagram illustrates the above mentioned modules relationships in this sample project.
 In order to support feature modules and (if properly configured) _Instant Apps_, the project's view/presentation layer is split into three modules (`sample-app`, `sample-app-core` and `sample-app-feature1`).
 For simplicity's sake, these modules are not listed separately in the diagram, but grouped as `product-app`.
 
@@ -47,3 +63,19 @@ To ensure _Dagger_ is still able to build the dependency graph after our layer s
 - Modules and dependencies are, by default, _only accessible by components in the same layer_
 - To make a module available to the immediate lower layer (**bridge module**), it needs to be public, call back to the `Component` in the upper architecture layer and must be added to the component where it will be accessed
 - To make dependencies available to the immediate lower layer, they need to be added to one of the above bridge modules, exposed in their native `Component` (via a [provision method](https://google.github.io/dagger/api/2.14/dagger/Component.html))
+
+## License
+
+    Copyright 2018 Teamwork.com
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
