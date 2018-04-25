@@ -24,7 +24,7 @@ Listed below, a quick description of each module and a class diagram with their 
 ### Modules description
 
 Module name | Description | Module dependencies (direct or indirect)
-------------- | ----------- | -------------------------- | -----------------------
+------------- | ----------- | --------------------------
 **sample-entity** | Business entities (the `Entity` layer in _Clean_) | _No dependencies_
 **sample-data-access** | The `Data Access` layer, interfaces for the business layer to access the data layer | `sample-entity`
 **sample-data** | The `Data ` layer, which includes networking, caching and data delivery for the business layer to manipulate. Exposes via Dagger the `DataRepo` dependencies to the business layer | `sample-data-access`, `sample-entity`
