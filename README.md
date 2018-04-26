@@ -1,7 +1,7 @@
 # Clean Architecture on Android: the Teamwork.com way!
 The purpose of this repository is to showcase, with a very simple (but hopefully clear) sample *Android* project, how we have implemented Uncle Bob's [Clean Architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html) in our applications.
 
-Given that broad nature of the topic and the amount of implementation details necessary to implement a working production project, we have simplified our example and focused solely on the following areas:
+Given that broad nature of the topic and the amount of implementation details necessary to implement a working production project, we have simplified our example as much as possible and focused solely on the following areas:
 - **Module structure:** each architecture layer has its own module, following closely the _Clean_ principles and naming.
 - **Separation of layers**: how to configure Gradle making use of `api`/`implementation` to hide unwanted dependencies
 - **Dependency Injection:** how to set up *Dagger 2* for a multi-module environment, but still ensuring the above point
@@ -45,8 +45,8 @@ For simplicity's sake, these modules are not listed separately in the diagram, b
 Google has done a very good job at producing a set of code examples in their [Android Architecture Blueprints](https://github.com/googlesamples/android-architecture) repository.
 We took inspiration from it (especially from the [todo-mvp-clean](https://github.com/googlesamples/android-architecture/tree/todo-mvp-clean/) and [todo-mvp-dagger](https://github.com/googlesamples/android-architecture/tree/todo-mvp-dagger/) branches), but found that the examples are quite simple and not suited for more complex applications. More specifically:
 - It is well suited for small projects, but the _"monolith module"_ approach doesn't scale well for medium/large applications
-- The package-based separation of layers cannot enforced and is therefore very error-prone (especially when working in a big team)
-- It is only a partial implementation of *Clean*: there is no real separation between presentation and business layer (*use cases*)
+- The package-based separation of layers cannot be enforced at compile-time and is therefore very error-prone (especially when working in a big team)
+- It is only a partial implementation of *Clean*: there is no real separation between presentation and business layer (*presenters* and *use cases*)
 - It does not allow sharing code across applications, nor it is suitable for feature modules or _Instant Apps_
 
 ## Dependency Injection
