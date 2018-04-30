@@ -2,7 +2,7 @@ package com.teamwork.android.samples.clean.business.injection;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.RestrictTo;
-import com.teamwork.android.samples.business.injection.module.bridge.DataAccessLayerModule;
+import com.teamwork.android.samples.business.injection.module.bridge.DataAccessLayerBridgeModule;
 import com.teamwork.android.samples.business.injection.module.exported.DataRepoModule;
 import com.teamwork.android.samples.clean.business.feature1.detail.Feature1DetailsInteractor;
 import com.teamwork.android.samples.clean.business.feature1.list.Feature1ListInteractor;
@@ -17,7 +17,7 @@ import javax.inject.Singleton;
         InteractorsBindingModule.class,
         DataRepoModule.class,
         // data access layer dependencies
-        DataAccessLayerModule.class
+        DataAccessLayerBridgeModule.class
 })
 public interface SampleBusinessComponent {
 

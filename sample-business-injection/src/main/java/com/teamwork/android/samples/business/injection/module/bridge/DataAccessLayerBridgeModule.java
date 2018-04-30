@@ -13,7 +13,7 @@ import javax.inject.Singleton;
  * {@link DataAccessComponent}.
  */
 @Module
-public class DataAccessLayerModule {
+public class DataAccessLayerBridgeModule {
 
     @Provides
     @Singleton
