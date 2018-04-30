@@ -57,12 +57,46 @@ Any exception to this rule must be explicitly declared and made available throug
 
 In order to allow using _Dagger_ with our class visibility constraints, we have devised a more verbose (and certainly less "elegant") configuration which overcomes this limitations.
 
-### Dependency Injection constraints
-To ensure _Dagger_ is still able to build the dependency graph after our layer separation, additional configuration to its `Component`s is necessary.
-- Each main layer _application_ (_presentation_), _business_ and _data_ have an entirely separate `Component`
+### Goals
+In short, what we want to achieve is:
+- Each main application layer, _presentation_, _business_ and _data_ have an entirely separate `Component`
+- Once the initialization of the lower layer component is started, Dagger's dependency graph resolver takes care of initializing everything else
 - Modules and dependencies are, by default, _only accessible by components in the same layer_
-- To make a module available to the immediate lower layer (**bridge module**), it needs to be public, call back to the `Component` in the upper architecture layer and must be added to the component where it will be accessed
-- To make dependencies available to the immediate lower layer, they need to be added to one of the above bridge modules, exposed in their native `Component` (via a [provision method](https://google.github.io/dagger/api/2.14/dagger/Component.html))
+
+### Workaround
+To ensure _Dagger_ is still able to build the dependency graph after our layer separation, additional configuration to its `Component`s is necessary.
+- To make a module available to the immediate lower layer, the `Component` is created and injected through what we call a **bridge module**
+- Dependencies required by the immediate lower layer need to be added to a module (which we call an **exported module**), and exposed in their native `Component` (via a [provision method](https://google.github.io/dagger/api/2.14/dagger/Component.html))
+- Components and dependencies are then initialized in their `@Provides` methods, requiring no explicit chain of initialization
+
+### Dependency Injection: example
+The above workaround's implementation is admittedly complex, but it's much easier to show in an example.
+First of all, we have three separate Dagger `Component`s in our codebase: `ApplicationComponent` (view/presentation layer), `SampleBusinessComponent` and `SampleDataComponent`.
+These are declared in the corresponding layer's module to make sure that the Dagger annotation processor and compiler have access to all the required dependencies from the generated provider classes.
+
+Let's take our `Feature2DetailsPresenter` example and follow its dependencies from the bottom-up in the architecture hierarchy:
+
+#### Initialization
+- First, the `SampleApplication` class takes care of building the `ApplicationComponent` in the `Application.onCreate()` method as usual
+- `ApplicationComponent` declares `BusinessLayerBridgeModule`: the module acts as a **bridge** between the two layers and contains a `@Singleton` provider method which will build the instance of `SampleBusinessComponent`
+- Similarly, `SampleBusinessComponent` declares the **exported** module `DataAccessLayerBridgeModule`: its provider method will build (on demand) the singleton instance of `SampleDataComponent`
+- `SampleBusinessComponent` will be used by the provider methods in `InteractorsModule`, which **exports** the interactors binding in the presentation layer
+
+#### Presentation layer
+- When the default activity `Feature2DetailsActivity` is created, an injector method is called in the `onCreate()`
+- An instance of `Feature2DetailsPresenter` must be created: the class has an `@Inject` constructor that Dagger uses to instantiate it
+- `Feature2DetailsInteractor` is required by the constructor: we need to access the class provider, which is declared in `InteractorsModule`
+
+#### Business layer
+- `InteractorsModule` calls back to the `SampleBusinessComponent`
+- `SampleBusinessComponent` exposes in its interface the access to `Feature2DetailsInteractor` via a provision method (`feature2DetailsInteractor()`)
+- Interactor bindings between interface and concrete implementation are declared in `InteractorsBindingModule` (`Feature2DetailsInteractor` binds to `Feature2DetailsInteractorImpl`)
+- The bound implementation `Feature2DetailsInteractorImpl` has dependencies from the data access layer: `Entity1Repo` is one of those
+
+#### Data Access / Data layer
+- The Dagger `SampleDataComponent` extends from the `DataAccessComponent`: all the provision methods for data access layer classes which are needed in the business layer are available here
+- `DataAccessComponent` exposes the needed provision method: `Entity1Repo entity1Repo()`
+- `SampleDataComponent` includes `DataRepoBindingModule`, which, finally, contains the binding method which provides an instance of `Entity1RepoImpl` for the `Entity1Repo` interface
 
 ## License
 
