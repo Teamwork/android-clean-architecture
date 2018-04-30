@@ -1,7 +1,6 @@
 package com.teamwork.android.samples.clean.app
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
@@ -27,11 +26,6 @@ class SampleActivity : AppCompatActivity(), Feature1ListView, Feature1DetailsVie
 
         setContentView(R.layout.activity_sample)
         setSupportActionBar(toolbar)
-
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
 
         presenter.onViewCreated(this)
         detailsPresenter.onViewCreated(this)
