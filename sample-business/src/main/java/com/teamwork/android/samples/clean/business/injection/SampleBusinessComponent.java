@@ -1,5 +1,6 @@
 package com.teamwork.android.samples.clean.business.injection;
 
+import com.teamwork.android.samples.business.injection.module.bridge.DataAccessLayerModule;
 import com.teamwork.android.samples.business.injection.module.exported.DataRepoModule;
 import com.teamwork.android.samples.clean.business.feature1.detail.Feature1DetailsInteractor;
 import com.teamwork.android.samples.clean.business.feature1.list.Feature1ListInteractor;
@@ -12,7 +13,8 @@ import javax.inject.Singleton;
 @Singleton
 @Component(modules = {
         InteractorsBindingModule.class,
-        DataRepoModule.class
+        DataRepoModule.class,
+        DataAccessLayerModule.class
 })
 public interface SampleBusinessComponent {
 

@@ -3,7 +3,6 @@ package com.teamwork.android.samples.clean.business;
 import android.app.Application;
 import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
-import com.teamwork.android.samples.business.injection.SampleDataComponentInitializer;
 import com.teamwork.android.samples.clean.business.injection.SampleBusinessComponent;
 import com.teamwork.android.samples.clean.business.injection.SampleBusinessComponentProvider;
 
@@ -61,7 +60,6 @@ public abstract class SampleBusinessApplication extends Application {
     protected abstract void initializeAppComponent();
 
     private void initializeDataComponent() {
-        SampleDataComponentInitializer.get().initialize(this);
     }
 
     private void initializeBusinessComponent() {
