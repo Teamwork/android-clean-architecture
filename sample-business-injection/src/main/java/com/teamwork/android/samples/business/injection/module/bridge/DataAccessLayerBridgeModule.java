@@ -9,8 +9,10 @@ import dagger.Provides;
 import javax.inject.Singleton;
 
 /**
- * Dagger {@link Module} to be declared in the 'business' layer component to provide the dependencies exposed by the
- * {@link DataAccessComponent}.
+ * Provider Dagger {@link Module} where the {@link SampleDataComponent} gets initialized.
+ * <p>
+ * This module should be declared in the business layer component to provide the dependencies exposed by the {@link
+ * DataAccessComponent}.
  */
 @Module
 public class DataAccessLayerBridgeModule {

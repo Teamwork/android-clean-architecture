@@ -8,8 +8,10 @@ import dagger.Provides;
 import javax.inject.Singleton;
 
 /**
- * Dagger {@link Module} to be used in the 'business' layer component to provide the dependencies exposed by the {@link
- * SampleBusinessComponent}.
+ * Provider Dagger {@link Module} where the {@link SampleBusinessComponent} gets initialized.
+ * <p>
+ * This module must be be used in the application/presentation layer component to provide the dependencies exposed by
+ * the {@link SampleBusinessComponent}.
  */
 @Module
 public class BusinessLayerBridgeModule {
