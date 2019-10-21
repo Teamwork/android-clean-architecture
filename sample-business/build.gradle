@@ -33,8 +33,9 @@ android {
 }
 
 dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
+
     // third party dependencies
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
     api "com.android.support:appcompat-v7:${versions.supportLibrary}"
 
     // Dagger for Dependency Injection
