@@ -35,7 +35,7 @@ android {
 
 dependencies {
     // third party dependencies
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
 
     api "javax.inject:javax.inject:1"
     api "com.google.code.findbugs:jsr305:${versions.jsrAnnotations}"

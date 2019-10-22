@@ -33,8 +33,9 @@ android {
 }
 
 dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
+
     // third party dependencies
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
 
     // use Inject (and other useful annotations) without the need for the Dagger dependency
     api "javax.inject:javax.inject:1"
