@@ -69,7 +69,7 @@ public abstract class SampleBusinessApplication extends Application {
     //endregion
 
     protected @NonNull SampleBusinessComponent getBusinessComponent() {
-        return SampleBusinessComponent.getProvider().getComponent();
+        return SampleBusinessComponent.Companion.getProvider().getComponent();
     }
 
 }
