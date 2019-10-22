@@ -44,7 +44,7 @@ public class SampleApplication extends SampleBusinessApplication {
     }
 
     private @NonNull ApplicationComponent buildAppComponent() {
-        return DaggerApplicationComponent.builder().build();
+        return DaggerApplicationComponent.factory().create(this);
     }
 
 }

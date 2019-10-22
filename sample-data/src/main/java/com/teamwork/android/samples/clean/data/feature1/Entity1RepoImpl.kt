@@ -2,6 +2,7 @@
 
 package com.teamwork.android.samples.clean.data.feature1
 
+import android.content.Context
 import com.squareup.moshi.Moshi
 import com.teamwork.android.samples.clean.data.access.DataRequest
 import com.teamwork.android.samples.clean.data.access.feature1.Entity1Repo
@@ -13,8 +14,10 @@ import javax.inject.Inject
 
 @ThreadSafe
 class Entity1RepoImpl
-@Inject constructor(okHttpClient: OkHttpClient,
-                    moshi: Moshi)
+@Inject constructor(
+        appContext: Context,
+        okHttpClient: OkHttpClient,
+        moshi: Moshi)
     : Entity1Repo {
 
     override fun getEntity1(id: Long): DataRequest<Entity1> {

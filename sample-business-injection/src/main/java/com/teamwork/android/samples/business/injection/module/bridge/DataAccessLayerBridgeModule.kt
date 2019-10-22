@@ -1,5 +1,6 @@
 package com.teamwork.android.samples.business.injection.module.bridge
 
+import android.content.Context
 import com.teamwork.android.samples.clean.data.access.DataAccessComponent
 import com.teamwork.android.samples.clean.data.injection.DaggerSampleDataComponent
 import com.teamwork.android.samples.clean.data.injection.SampleDataComponent
@@ -18,8 +19,8 @@ object DataAccessLayerBridgeModule {
     @Provides
     @Singleton
     @JvmStatic
-    fun dataAccessComponent(): DataAccessComponent {
-        val dataComponent = DaggerSampleDataComponent.builder().build()
+    fun dataAccessComponent(appContext: Context): DataAccessComponent {
+        val dataComponent = DaggerSampleDataComponent.factory().create(appContext)
         SampleDataComponent.provider.component = dataComponent
         return dataComponent
     }

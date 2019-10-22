@@ -1,7 +1,7 @@
 package com.teamwork.android.samples.clean.data.injection.module.internal
 
-import com.squareup.moshi.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.teamwork.android.samples.clean.data.BuildConfig
 import dagger.Module
 import dagger.Provides

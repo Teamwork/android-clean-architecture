@@ -1,8 +1,11 @@
 package com.teamwork.android.samples.clean.data.injection
 
+import android.content.Context
 import com.teamwork.android.samples.clean.data.access.DataAccessComponent
 import com.teamwork.android.samples.clean.data.injection.module.internal.DataRepoBindingModule
 import com.teamwork.android.samples.clean.data.injection.module.internal.NetworkModule
+import com.teamwork.android.samples.clean.data.injection.module.internal.ThreadingModule
+import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
 
@@ -10,15 +13,13 @@ import javax.inject.Singleton
  * Dagger component for dependency injection of classes in the 'sample-data' module (data layer).
  *
  * The [Component] extends from [DataAccessComponent] so that the required "public" dependencies that need
- * to be exposed to the business layer via a provision method (https://google.github.io/dagger/api/2.14/dagger/Component.html)
+ * to be exposed to the business layer via a provision method (https://google.github.io/dagger/api/2.24/dagger/Component.html)
  * are declared here.
- *
- * TODO: provide an example of an AndroidModule (which provides the app Context and system services) that's used across
- * layers.
  */
 @Singleton
 @Component(modules = [
     NetworkModule::class,
+    ThreadingModule::class,
     // dependency class bindings to expose modules
     DataRepoBindingModule::class
 ])
@@ -32,20 +33,21 @@ interface SampleDataComponent : DataAccessComponent {
     //endregion
 
 
-    //region component provider
+    //region component factory
 
-    class ComponentProvider {
+    @Component.Factory
+    interface Factory {
+        fun create(@BindsInstance applicationContext: Context): SampleDataComponent
+    }
+
+    object ComponentProvider {
 
         @Volatile
         lateinit var component: SampleDataComponent
-
-        companion object {
-            val COMPONENT_PROVIDER = ComponentProvider()
-        }
     }
 
     companion object {
-        val provider: ComponentProvider by lazy { ComponentProvider.COMPONENT_PROVIDER }
+        val provider: ComponentProvider by lazy { ComponentProvider }
     }
 
     //endregion

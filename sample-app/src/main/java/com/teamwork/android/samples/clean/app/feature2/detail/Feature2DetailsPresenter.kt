@@ -6,8 +6,12 @@ import com.teamwork.android.samples.clean.core.BasePresenter
 import com.teamwork.android.samples.clean.entity.feature2.Entity2
 import javax.inject.Inject
 
-class Feature2DetailsPresenter @Inject constructor(private val interactor: Feature2DetailsInteractor)
-    : BasePresenter<Feature2DetailsView>(), Interactor.Callback<Entity2> {
+class Feature2DetailsPresenter @Inject constructor(
+        private val interactor: Feature2DetailsInteractor//,
+
+        // @Named(SampleBusinessComponent.GLOBAL_COMPUTATION_EXECUTOR) // TODO
+        // private val computationExecutor: ExecutorService
+) : BasePresenter<Feature2DetailsView>(), Interactor.Callback<Entity2> {
 
     override fun onViewCreated(view: Feature2DetailsView) {
         super.onViewCreated(view)

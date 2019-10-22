@@ -1,5 +1,6 @@
 package com.teamwork.android.samples.clean.business.injection.module.bridge
 
+import android.content.Context
 import com.teamwork.android.samples.clean.business.injection.DaggerSampleBusinessComponent
 import com.teamwork.android.samples.clean.business.injection.SampleBusinessComponent
 import dagger.Module
@@ -18,8 +19,8 @@ object BusinessLayerBridgeModule {
     @Provides
     @Singleton
     @JvmStatic
-    fun businessComponent(): SampleBusinessComponent {
-        val dataComponent = DaggerSampleBusinessComponent.builder().build()
+    fun businessComponent(applicationContext: Context): SampleBusinessComponent {
+        val dataComponent = DaggerSampleBusinessComponent.factory().create(applicationContext)
         SampleBusinessComponent.provider.component = dataComponent
         return dataComponent
     }

@@ -68,7 +68,7 @@ In short, what we want to achieve is:
 ### Workaround
 To ensure _Dagger_ is still able to build the dependency graph after our layer separation, additional configuration to its `Component`s is necessary.
 - To make a module available to the immediate lower layer, the `Component` is created and injected through what we call a **bridge module**
-- Dependencies required by the immediate lower layer need to be added to a module (which we call an **exported module**), and exposed in their native `Component` (via a [provision method](https://google.github.io/dagger/api/2.14/dagger/Component.html))
+- Dependencies required by the immediate lower layer need to be added to a module (which we call an **exported module**), and exposed in their native `Component` (via a [provision method](https://google.github.io/dagger/api/2.24/dagger/Component.html))
 - Components and dependencies are then initialized in their `@Provides` methods, requiring no explicit chain of initialization
 
 ### Dependency Injection: example
