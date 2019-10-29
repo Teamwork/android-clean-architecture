@@ -23,25 +23,24 @@ We came up with our solution (and we iteratively try to improve it) based on the
 ## Modules
 Listed below, a quick description of each module and a class diagram with their relationships.
 
-### Modules description
-
-Module name | Description | Module dependencies (direct or indirect)
-------------- | ----------- | --------------------------
-**sample-entity** | Business entities (the `Entity` layer in _Clean_) | _No dependencies_
-**sample-data-access** | The `Data Access` layer, interfaces for the business layer to access the data layer | `sample-entity`
-**sample-data** | The `Data ` layer, which includes networking, caching and data delivery for the business layer to manipulate. Exposes via Dagger the `DataRepo` dependencies to the business layer | `sample-data-access`, `sample-entity`
-**sample-business-injection** | Bridge module between the data and the business layer. Prevents implementation details in the data layer from being accessible in the business layer, and exposes the repositories exposed through the data access layer | `sample-data`, `sample-data-access`, `sample-entity`
-**sample-business** | Business layer, contains interactors which are then exposed to the presentation layer. | `sample-business-injection`, `sample-data-access`, `sample-entity`
-**sample-app-core** | Core, base module for the view and presentation layer. Contains themes, styles, resources, strings and components that are used across apps and feature modules. | `sample-business`, `sample-entity`
-**sample-app-feature1** | View and presentation module for a "big" feature. This can be then extracted to use with _Instant Apps_ if desired | `sample-app-core`, `sample-business`, `sample-entity`
-**sample-app** | View and presentation layers for the _application module_ | `sample-app-core`, `sample-app-feature1`, `sample-business`, `sample-entity`
-
 ### Modules relationships
 The following diagram illustrates the above mentioned modules relationships in this sample project.
-In order to support feature modules and (if properly configured) _Instant Apps_, the project's view/presentation layer is split into three modules (`sample-app`, `sample-app-core` and `sample-app-feature1`).
-For simplicity's sake, these modules are not listed separately in the diagram, but grouped as `product-app`.
+In order to support feature modules and (if properly configured) _Instant Apps_, the project's view/presentation layer is split into three modules; this is not a requirement and it can be avoided for small projects.
 
-![](docs/clean_app_architecture_v1.png)
+![](docs/clean_app_architecture_v2.png)
+
+### Modules description
+
+Module | Description | Module dependencies (direct or indirect)
+------------- | ----------- | --------------------------
+**-entity** | Business entities (the `Entity` layer in _Clean_) | _No dependencies_
+**-data-bridge** | "Bridge" module only used for the initialization of the `Data` layer. Prevents implementation details in the data layer from being accessible in the business layer. | `sample-data`, `sample-data-access`, `sample-entity`
+**-data-access** | The `Data Access` layer, interfaces for the business layer to access the data layer | `sample-entity`
+**-data** | The `Data ` layer, which includes networking, caching and data delivery for the business layer to manipulate. Exposes via Dagger the `DataRepo` dependencies to the business layer | `sample-data-access`, `sample-entity`
+**-business** | Business layer, contains interactors and business logic (which can then exposed to the presentation layer if necessary). | `sample-business-injection`, `sample-data-access`, `sample-entity`
+**-app-core** | Core, base module for the view and presentation layer. Contains themes, styles, resources, strings and components that are used across apps and feature modules. | `sample-business`, `sample-entity`
+**-app-feature1** | View and presentation module for a "big" feature. This can be then extracted to use with _Instant Apps_ if desired | `sample-app-core`, `sample-business`, `sample-entity`
+**-app** | View and presentation layers for the _application module_ | `sample-app-core`, `sample-app-feature1`, `sample-business`, `sample-entity`
 
 ## Google Android Architecture Samples
 Google has done a very good job at producing a set of code examples in their [Android Architecture Blueprints](https://github.com/googlesamples/android-architecture) repository.
@@ -99,6 +98,9 @@ Let's take our `Feature2DetailsPresenter` example and follow its dependencies fr
 - The Dagger `SampleDataComponent` extends from the `DataAccessComponent`: all the provision methods for data access layer classes which are needed in the business layer are available here
 - `DataAccessComponent` exposes the needed provision method: `Entity1Repo entity1Repo()`
 - `SampleDataComponent` includes `DataRepoBindingModule`, which, finally, contains the binding method which provides an instance of `Entity1RepoImpl` for the `Entity1Repo` interface
+
+## Other references
+TODO
 
 ## License
 
