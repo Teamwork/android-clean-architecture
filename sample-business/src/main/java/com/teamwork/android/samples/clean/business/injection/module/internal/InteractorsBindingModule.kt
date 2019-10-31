@@ -6,7 +6,7 @@ import com.teamwork.android.samples.clean.business.feature1.list.Feature1ListInt
 import com.teamwork.android.samples.clean.business.feature1.list.Feature1ListInteractorImpl
 import com.teamwork.android.samples.clean.business.feature2.detail.Feature2DetailsInteractor
 import com.teamwork.android.samples.clean.business.feature2.detail.Feature2DetailsInteractorImpl
-import com.teamwork.android.samples.clean.business.injection.SampleBusinessComponent
+import com.teamwork.android.samples.clean.business.injection.BusinessComponent
 import com.teamwork.android.samples.clean.business.internal.InternalInteractor
 import com.teamwork.android.samples.clean.business.internal.InternalInteractorImpl
 import dagger.Binds
@@ -18,7 +18,7 @@ import javax.inject.Singleton
  * initialized within the internal business component.
  *
  * To expose the interactors to the app layer (i.e. most interactors will be needed from presenters), declare their
- * interfaces in [SampleBusinessComponent].
+ * interfaces in [BusinessComponent].
  */
 @Module
 internal interface InteractorsBindingModule {

@@ -12,7 +12,7 @@ import javax.inject.Singleton
 /**
  * Initializer class for the `data` layer.
  *
- * It takes care of triggering the initialization of the [SampleDataComponent] from [initialize], and of all the
+ * It takes care of triggering the initialization of the [DataComponent] from [initialize], and of all the
  * other layer initialization code dependent on the component in [initializeNetworkLayer] and [initializeCacheLayer].
  */
 @Singleton
@@ -25,12 +25,12 @@ class DataLayerInitializer {
     fun initialize(appContext: Context) {
         initializeDataComponent(appContext)
 
-        SampleDataComponent.INSTANCE.inject(this)
+        DataComponent.INSTANCE.inject(this)
     }
 
-    private fun initializeDataComponent(appContext: Context): SampleDataComponent {
-        val dataComponent = DaggerSampleDataComponent.factory().create(appContext)
-        SampleDataComponent.INSTANCE = dataComponent
+    private fun initializeDataComponent(appContext: Context): DataComponent {
+        val dataComponent = DaggerDataComponent.factory().create(appContext)
+        DataComponent.INSTANCE = dataComponent
         DataAccessComponent.INSTANCE = dataComponent
         return dataComponent
     }

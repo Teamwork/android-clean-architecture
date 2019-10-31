@@ -25,22 +25,22 @@ import javax.inject.Singleton
             DataRepoBindingModule::class
         ]
 )
-internal interface SampleDataComponent : DataAccessComponent {
+internal interface DataComponent : DataAccessComponent {
 
     companion object {
         /**
-         * The singleton instance for [SampleDataComponent].
+         * The singleton instance for [DataComponent].
          * This is initialised by the `data` layer itself and primarily used to inject internal dependencies.
          * The instance can be replaced with a mock for testing when necessary.
          */
         @Volatile
         @JvmStatic
-        lateinit var INSTANCE: SampleDataComponent
+        lateinit var INSTANCE: DataComponent
     }
 
     @Component.Factory
     interface Factory {
-        fun create(@BindsInstance applicationContext: Context): SampleDataComponent
+        fun create(@BindsInstance applicationContext: Context): DataComponent
     }
 
     //region `data` layer internal dependencies

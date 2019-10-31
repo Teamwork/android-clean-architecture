@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
 import com.teamwork.android.samples.clean.app.injection.ApplicationComponent;
 import com.teamwork.android.samples.clean.app.injection.DaggerApplicationComponent;
 import com.teamwork.android.samples.clean.business.SampleBusinessApplication;
-import com.teamwork.android.samples.clean.business.injection.SampleBusinessComponent;
+import com.teamwork.android.samples.clean.business.injection.BusinessComponent;
 
 /**
  * Projects {@link Application} concrete class.
@@ -34,7 +34,7 @@ public class SampleApplication extends SampleBusinessApplication {
     }
 
     @Override
-    protected void initializeAppComponent(SampleBusinessComponent businessComponent) {
+    protected void initializeAppComponent(BusinessComponent businessComponent) {
         ApplicationComponent.setINSTANCE(buildAppComponent(businessComponent));
     }
 
@@ -45,7 +45,7 @@ public class SampleApplication extends SampleBusinessApplication {
         // initialize here presentation/view layers
     }
 
-    private @NonNull ApplicationComponent buildAppComponent(SampleBusinessComponent businessComponent) {
+    private @NonNull ApplicationComponent buildAppComponent(BusinessComponent businessComponent) {
         return DaggerApplicationComponent.factory().create(this, businessComponent);
     }
 

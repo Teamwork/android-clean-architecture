@@ -3,7 +3,7 @@ package com.teamwork.android.samples.clean.app.injection
 import android.content.Context
 import com.teamwork.android.samples.clean.app.SampleActivity
 import com.teamwork.android.samples.clean.app.feature2.detail.Feature2DetailsActivity
-import com.teamwork.android.samples.clean.business.injection.SampleBusinessComponent
+import com.teamwork.android.samples.clean.business.injection.BusinessComponent
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -12,7 +12,7 @@ import javax.inject.Singleton
 @Component(
         modules = [],
         dependencies = [
-            SampleBusinessComponent::class
+            BusinessComponent::class
         ]
 )
 interface ApplicationComponent {
@@ -32,7 +32,7 @@ interface ApplicationComponent {
     interface Factory {
         fun create(
                 @BindsInstance applicationContext: Context,
-                businessComponent: SampleBusinessComponent
+                businessComponent: BusinessComponent
         ): ApplicationComponent
 
     }

@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
 
 import com.teamwork.android.samples.clean.business.injection.BusinessLayerInitializer;
 import com.teamwork.android.samples.clean.business.injection.InternalBusinessComponent;
-import com.teamwork.android.samples.clean.business.injection.SampleBusinessComponent;
+import com.teamwork.android.samples.clean.business.injection.BusinessComponent;
 import com.teamwork.android.samples.data.bridge.DataBridgeInitializer;
 
 /**
@@ -34,19 +34,19 @@ public abstract class SampleBusinessApplication extends Application {
 
     protected final void initializeGlobalDependencyManagement() {
         initializeDataComponent();
-        SampleBusinessComponent businessComponent = initializeBusinessComponent();
+        BusinessComponent businessComponent = initializeBusinessComponent();
         initializeAppComponent(businessComponent);
 
         onDependencyManagementInitialized();
     }
 
-    protected abstract void initializeAppComponent(SampleBusinessComponent businessComponent);
+    protected abstract void initializeAppComponent(BusinessComponent businessComponent);
 
     private void initializeDataComponent() {
         DataBridgeInitializer.INSTANCE.initialize(this);
     }
 
-    private @NonNull SampleBusinessComponent initializeBusinessComponent() {
+    private @NonNull BusinessComponent initializeBusinessComponent() {
         businessLayerInitializer = new BusinessLayerInitializer();
         businessLayerInitializer.initialize(this);
         return getBusinessComponent();
@@ -83,7 +83,7 @@ public abstract class SampleBusinessApplication extends Application {
 
     //endregion
 
-    protected @NonNull SampleBusinessComponent getBusinessComponent() {
+    protected @NonNull BusinessComponent getBusinessComponent() {
         return InternalBusinessComponent.Companion.getINSTANCE();
     }
 

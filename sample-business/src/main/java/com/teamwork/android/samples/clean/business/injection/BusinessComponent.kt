@@ -12,7 +12,7 @@ import java.util.concurrent.ExecutorService
 import javax.inject.Named
 import javax.inject.Singleton
 
-interface SampleBusinessComponent {
+interface BusinessComponent {
 
     companion object {
         const val GLOBAL_COMPUTATION_EXECUTOR = DataAccessComponent.GLOBAL_COMPUTATION_EXECUTOR
@@ -48,7 +48,7 @@ interface SampleBusinessComponent {
             DataAccessComponent::class
         ]
 )
-internal interface InternalBusinessComponent : SampleBusinessComponent {
+internal interface InternalBusinessComponent : BusinessComponent {
 
     companion object {
         /**
