@@ -17,9 +17,16 @@ import javax.inject.Singleton
 )
 interface ApplicationComponent {
 
-    fun inject(activity: SampleActivity)
-
-    fun inject(activity: Feature2DetailsActivity)
+    companion object {
+        /**
+         * The singleton instance for [ApplicationComponent].
+         * This is initialised by the `presentation` layer itself and primarily used to inject dependencies.
+         * The instance can be replaced with a mock for testing when necessary.
+         */
+        @Volatile
+        @JvmStatic
+        lateinit var INSTANCE: ApplicationComponent
+    }
 
     @Component.Factory
     interface Factory {
@@ -27,6 +34,11 @@ interface ApplicationComponent {
                 @BindsInstance applicationContext: Context,
                 businessComponent: SampleBusinessComponent
         ): ApplicationComponent
+
     }
+
+    fun inject(activity: SampleActivity)
+
+    fun inject(activity: Feature2DetailsActivity)
 
 }

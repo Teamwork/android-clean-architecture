@@ -17,8 +17,10 @@ class Entity1RepoImpl
 @Inject constructor(
         appContext: Context,
         okHttpClient: OkHttpClient,
-        moshi: Moshi)
-    : Entity1Repo {
+        moshi: Moshi
+) : Entity1Repo {
+
+    override fun initialize() {} // does initialization stuff!
 
     override fun getEntity1(id: Long): DataRequest<Entity1> {
         throw UnsupportedOperationException()

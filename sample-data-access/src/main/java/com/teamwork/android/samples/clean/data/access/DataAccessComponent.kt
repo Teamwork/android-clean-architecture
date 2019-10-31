@@ -15,7 +15,11 @@ import javax.inject.Named
 interface DataAccessComponent {
 
     companion object {
-
+        /**
+         * The singleton instance for [DataAccessComponent].
+         * This is initialised by the `data-bridge` module and used by the `business` layer.
+         * The instance can be replaced with a mock for testing when necessary.
+         */
         @Volatile
         @JvmStatic
         lateinit var INSTANCE: DataAccessComponent

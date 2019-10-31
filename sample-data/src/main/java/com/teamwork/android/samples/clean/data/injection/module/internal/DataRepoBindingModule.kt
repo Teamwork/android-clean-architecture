@@ -17,12 +17,10 @@ internal object DataRepoBindingModule {
 
     @Provides
     @Singleton
-    @JvmStatic
     fun projectsPeopleRepo(repo: Entity1RepoImpl): Entity1Repo = repo
 
     @Provides
     @Singleton
-    @JvmStatic
     fun taskListsRepo(repo: Entity2RepoImpl): Entity2Repo = repo
 
 }

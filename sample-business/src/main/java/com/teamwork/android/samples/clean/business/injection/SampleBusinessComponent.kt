@@ -53,7 +53,7 @@ internal interface InternalBusinessComponent : SampleBusinessComponent {
     companion object {
         /**
          * The singleton instance for [InternalBusinessComponent].
-         * This is initialised by the `business` layer itself and mainly used to inject dependencies.
+         * This is initialised by the `business` layer itself and primarily used to inject internal dependencies.
          * The instance can be replaced with a mock for testing when necessary.
          */
         @Volatile

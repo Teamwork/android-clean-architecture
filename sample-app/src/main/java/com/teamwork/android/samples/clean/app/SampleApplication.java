@@ -2,9 +2,11 @@ package com.teamwork.android.samples.clean.app;
 
 import android.app.Application;
 import android.support.annotation.NonNull;
+
 import com.teamwork.android.samples.clean.app.injection.ApplicationComponent;
 import com.teamwork.android.samples.clean.app.injection.DaggerApplicationComponent;
 import com.teamwork.android.samples.clean.business.SampleBusinessApplication;
+import com.teamwork.android.samples.clean.business.injection.SampleBusinessComponent;
 
 /**
  * Projects {@link Application} concrete class.
@@ -21,30 +23,30 @@ public class SampleApplication extends SampleBusinessApplication {
     }
 
     public static @NonNull ApplicationComponent getAppComponent() {
-        return getInstance().appComponent;
+        return ApplicationComponent.getINSTANCE();
     }
-
-    private volatile ApplicationComponent appComponent;
 
     @Override
     @SuppressWarnings("PMD.CallSuperFirst")
-
     public void onCreate() {
         instance = this;
         super.onCreate();
     }
 
     @Override
-    protected void initializeAppComponent() {
-        appComponent = buildAppComponent();
+    protected void initializeAppComponent(SampleBusinessComponent businessComponent) {
+        ApplicationComponent.setINSTANCE(buildAppComponent(businessComponent));
     }
 
     @Override
     protected void onDependencyManagementInitialized() {
+        super.onDependencyManagementInitialized();
+
+        // initialize here presentation/view layers
     }
 
-    private @NonNull ApplicationComponent buildAppComponent() {
-        return DaggerApplicationComponent.factory().create(this);
+    private @NonNull ApplicationComponent buildAppComponent(SampleBusinessComponent businessComponent) {
+        return DaggerApplicationComponent.factory().create(this, businessComponent);
     }
 
 }

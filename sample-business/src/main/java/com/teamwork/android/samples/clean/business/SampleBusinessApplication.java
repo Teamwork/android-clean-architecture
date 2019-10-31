@@ -3,13 +3,19 @@ package com.teamwork.android.samples.clean.business;
 import android.app.Application;
 import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
+
+import com.teamwork.android.samples.clean.business.injection.BusinessLayerInitializer;
+import com.teamwork.android.samples.clean.business.injection.InternalBusinessComponent;
 import com.teamwork.android.samples.clean.business.injection.SampleBusinessComponent;
+import com.teamwork.android.samples.data.bridge.DataBridgeInitializer;
 
 /**
  * Contains business layer specific initialization for the main sample {@link Application} concrete class.
  */
 @SuppressWarnings("unused")
 public abstract class SampleBusinessApplication extends Application {
+
+    private BusinessLayerInitializer businessLayerInitializer;
 
     @Override
     public void onCreate() {
@@ -18,7 +24,7 @@ public abstract class SampleBusinessApplication extends Application {
         // the order of these calls is fundamental for a correct initialization, do NOT modify!
         initializeErrorManagement();
         initializeGlobalDependencyManagement();
-        initializeComponents();
+        initializeLayers();
     }
 
     protected void initializeErrorManagement() {
@@ -27,49 +33,58 @@ public abstract class SampleBusinessApplication extends Application {
     //region initialize global dependency injection
 
     protected final void initializeGlobalDependencyManagement() {
-        initializeAppComponent();
         initializeDataComponent();
-        initializeBusinessComponent();
+        SampleBusinessComponent businessComponent = initializeBusinessComponent();
+        initializeAppComponent(businessComponent);
 
         onDependencyManagementInitialized();
     }
 
-    @CallSuper
-    protected void initializeComponents() {
-        initializeNetworkLayer();
-        initializeCacheLayer();
-        initializeBusinessLayer();
+    protected abstract void initializeAppComponent(SampleBusinessComponent businessComponent);
+
+    private void initializeDataComponent() {
+        DataBridgeInitializer.INSTANCE.initialize(this);
+    }
+
+    private @NonNull SampleBusinessComponent initializeBusinessComponent() {
+        businessLayerInitializer = new BusinessLayerInitializer();
+        businessLayerInitializer.initialize(this);
+        return getBusinessComponent();
     }
 
     /**
      * Initialize any network-related component, such as network API containers, OkHttp and any web sockets.
      */
-    protected void initializeNetworkLayer() {
+    protected final void initializeNetworkLayer() {
+        DataBridgeInitializer.INSTANCE.initializeNetworkLayer(this);
     }
 
     /**
      * Initialize global caching components.
      */
-    protected void initializeCacheLayer() {
+    protected final void initializeCacheLayer() {
+        DataBridgeInitializer.INSTANCE.initializeCacheLayer(this);
     }
 
     protected final void initializeBusinessLayer() {
+        businessLayerInitializer.initializeBusinessLayer(this);
     }
 
-    protected abstract void initializeAppComponent();
-
-    private void initializeDataComponent() {
+    @CallSuper
+    protected void onDependencyManagementInitialized() {
+        initializeLayers();
     }
 
-    private void initializeBusinessComponent() {
+    protected void initializeLayers() {
+        initializeNetworkLayer();
+        initializeCacheLayer();
+        initializeBusinessLayer();
     }
-
-    protected abstract void onDependencyManagementInitialized();
 
     //endregion
 
     protected @NonNull SampleBusinessComponent getBusinessComponent() {
-        return SampleBusinessComponent.Companion.getProvider().getComponent();
+        return InternalBusinessComponent.Companion.getINSTANCE();
     }
 
 }

@@ -41,9 +41,6 @@ dependencies {
 
     // third party dependencies
 
-    // Dagger for Dependency Injection
-    api "com.google.dagger:dagger:${versions.dagger}"
-    kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
 
     // internal dependencies
 
