@@ -1,13 +1,9 @@
 package com.teamwork.android.samples.clean.business.injection
 
 import android.content.Context
-import android.support.annotation.RestrictTo
-import com.teamwork.android.samples.business.injection.module.bridge.DataAccessLayerBridgeModule
-import com.teamwork.android.samples.business.injection.module.exported.DataRepoModule
 import com.teamwork.android.samples.clean.business.feature1.detail.Feature1DetailsInteractor
 import com.teamwork.android.samples.clean.business.feature1.list.Feature1ListInteractor
 import com.teamwork.android.samples.clean.business.feature2.detail.Feature2DetailsInteractor
-import com.teamwork.android.samples.clean.business.injection.module.internal.BusinessThreadingModule
 import com.teamwork.android.samples.clean.business.injection.module.internal.InteractorsBindingModule
 import com.teamwork.android.samples.clean.data.access.DataAccessComponent
 import dagger.BindsInstance
@@ -16,19 +12,15 @@ import java.util.concurrent.ExecutorService
 import javax.inject.Named
 import javax.inject.Singleton
 
-@Singleton
-@Component(modules = [
-    BusinessThreadingModule::class,
-    InteractorsBindingModule::class,
-    DataRepoModule::class,
-    // data access layer dependencies
-    DataAccessLayerBridgeModule::class
-])
 interface SampleBusinessComponent {
+
+    companion object {
+        const val GLOBAL_COMPUTATION_EXECUTOR = DataAccessComponent.GLOBAL_COMPUTATION_EXECUTOR
+    }
 
     /*
      * Provision methods for public interactors that need to be exposed to the presentation layer.
-     * Any other interactor implementation which is not declared here will only be accessible from the other modules.
+     * Any other interactor implementation which is not declared here will only be accessible from within this layer.
      */
 
     fun feature1DetailsInteractor(): Feature1DetailsInteractor
@@ -45,27 +37,41 @@ interface SampleBusinessComponent {
 
     //endregion
 
+}
 
-    //region component factory
+@Singleton
+@Component(
+        modules = [
+            InteractorsBindingModule::class
+        ],
+        dependencies = [
+            DataAccessComponent::class
+        ]
+)
+internal interface InternalBusinessComponent : SampleBusinessComponent {
+
+    companion object {
+        /**
+         * The singleton instance for [InternalBusinessComponent].
+         * This is initialised by the `business` layer itself and mainly used to inject dependencies.
+         * The instance can be replaced with a mock for testing when necessary.
+         */
+        @Volatile
+        @JvmStatic
+        lateinit var INSTANCE: InternalBusinessComponent
+    }
 
     @Component.Factory
     interface Factory {
-        fun create(@BindsInstance applicationContext: Context): SampleBusinessComponent
+        fun create(@BindsInstance applicationContext: Context,
+                   dataAccessComponent: DataAccessComponent
+        ): InternalBusinessComponent
     }
 
-    @RestrictTo(RestrictTo.Scope.LIBRARY)
-    object ComponentProvider {
 
-        @Volatile
-        lateinit var component: SampleBusinessComponent
-    }
+    //region `data` layer injectable classes
 
-    companion object {
-
-        const val GLOBAL_COMPUTATION_EXECUTOR = DataAccessComponent.GLOBAL_COMPUTATION_EXECUTOR
-
-        val provider: ComponentProvider by lazy { ComponentProvider }
-    }
+    fun inject(businessLayerInitializer: BusinessLayerInitializer)
 
     //endregion
 
