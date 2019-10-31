@@ -8,9 +8,9 @@ import javax.inject.Named
 /**
  * Interface that lists all public 'data access' layer components which need to be exposed to the `business` layer.
  *
- * When Dagger is used, by letting the Dagger Component from the 'data layer' extend this interface we declare provision
- * methods (https://google.github.io/dagger/api/2.24/dagger/Component.html) which then can be used in modules to access
- * the necessary dependencies.
+ * When Dagger is used, by letting the Dagger Component from the 'data layer' extend this interface we declare
+ * [provision methods](https://dagger.dev/api/2.25.2/dagger/Component.html) which then can be used by injected
+ * classes in the business layer.
  */
 interface DataAccessComponent {
 

@@ -13,7 +13,7 @@ import javax.inject.Singleton
  * Dagger component for internal dependency injection of classes in the 'sample-data' module (data layer).
  *
  * The [Component] extends from [DataAccessComponent] so that the required "public" dependencies that need
- * to be exposed to the business layer via a [provision method](https://google.github.io/dagger/api/2.25.2/dagger/Component.html)
+ * to be exposed to the business layer via a [provision method](https://dagger.dev/api/2.25.2/dagger/Component.html)
  * are declared here.
  */
 @Singleton

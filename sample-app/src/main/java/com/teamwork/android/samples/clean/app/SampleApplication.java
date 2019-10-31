@@ -14,6 +14,7 @@ import com.teamwork.android.samples.clean.business.injection.BusinessComponent;
  * Don't use for lengthy unnecessary initializations, as anything executed here on the main thread will delay the
  * application startup and UI.
  */
+@SuppressWarnings("unused")
 public class SampleApplication extends SampleBusinessApplication {
 
     private static SampleApplication instance;
