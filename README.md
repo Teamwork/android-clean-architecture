@@ -43,8 +43,8 @@ Module | Description | Module dependencies (direct or indirect)
 **-app** | View and presentation layers for the _application module_ | `app-core`, `app-feature1`, `business`, `entity`
 
 ## Google Android Architecture Samples
-Google has done a very good job at producing a set of code examples in their [Android Architecture Blueprints](https://github.com/googlesamples/android-architecture) repository.
-We took inspiration from it (especially from the [todo-mvp-clean](https://github.com/googlesamples/android-architecture/tree/todo-mvp-clean/) and [todo-mvp-dagger](https://github.com/googlesamples/android-architecture/tree/todo-mvp-dagger/) branches), but found that the examples are quite simple and not suited for more complex applications.
+Google has done a very good job at producing a set of code examples in their [Android Architecture Blueprints](https://github.com/android/architecture-samples) repository.
+We took inspiration from it (especially from the [todo-mvp-clean](https://github.com/android/architecture-samples/tree/todo-mvp-clean), [todo-mvp-dagger](https://github.com/android/architecture-samples/tree/todo-mvp-dagger) and [dagger-android](https://github.com/android/architecture-samples/tree/dagger-android) branches), but found that the examples are quite simple and not suited for more complex applications.
 More specifically:
 - It is well suited for small projects, but the _"monolith module"_ approach doesn't scale well for medium/large applications
 - The package-based separation of layers cannot be enforced at compile-time and is therefore very error-prone (especially when working in a big team)
