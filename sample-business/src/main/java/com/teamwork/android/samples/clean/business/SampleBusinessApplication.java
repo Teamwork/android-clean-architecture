@@ -4,10 +4,9 @@ import android.app.Application;
 import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
 
+import com.teamwork.android.samples.clean.business.injection.BusinessComponent;
 import com.teamwork.android.samples.clean.business.injection.BusinessLayerInitializer;
 import com.teamwork.android.samples.clean.business.injection.InternalBusinessComponent;
-import com.teamwork.android.samples.clean.business.injection.BusinessComponent;
-import com.teamwork.android.samples.data.bridge.DataBridgeInitializer;
 
 /**
  * Contains business layer specific initialization for the main sample {@link Application} concrete class.
@@ -42,9 +41,7 @@ public abstract class SampleBusinessApplication extends Application {
 
     protected abstract void initializeAppComponent(BusinessComponent businessComponent);
 
-    private void initializeDataComponent() {
-        DataBridgeInitializer.INSTANCE.initialize(this);
-    }
+    protected abstract void initializeDataComponent();
 
     private @NonNull BusinessComponent initializeBusinessComponent() {
         businessLayerInitializer = new BusinessLayerInitializer();
@@ -55,16 +52,12 @@ public abstract class SampleBusinessApplication extends Application {
     /**
      * Initialize any network-related component, such as network API containers, OkHttp and any web sockets.
      */
-    protected final void initializeNetworkLayer() {
-        DataBridgeInitializer.INSTANCE.initializeNetworkLayer(this);
-    }
+    protected abstract void initializeNetworkLayer();
 
     /**
      * Initialize global caching components.
      */
-    protected final void initializeCacheLayer() {
-        DataBridgeInitializer.INSTANCE.initializeCacheLayer(this);
-    }
+    protected abstract void initializeCacheLayer();
 
     protected final void initializeBusinessLayer() {
         businessLayerInitializer.initializeBusinessLayer(this);

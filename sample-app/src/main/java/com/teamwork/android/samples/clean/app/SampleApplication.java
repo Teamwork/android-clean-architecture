@@ -7,6 +7,7 @@ import com.teamwork.android.samples.clean.app.injection.ApplicationComponent;
 import com.teamwork.android.samples.clean.app.injection.DaggerApplicationComponent;
 import com.teamwork.android.samples.clean.business.SampleBusinessApplication;
 import com.teamwork.android.samples.clean.business.injection.BusinessComponent;
+import com.teamwork.android.samples.data.bridge.DataBridgeInitializer;
 
 /**
  * Projects {@link Application} concrete class.
@@ -40,10 +41,25 @@ public class SampleApplication extends SampleBusinessApplication {
     }
 
     @Override
+    protected void initializeDataComponent() {
+        DataBridgeInitializer.INSTANCE.initialize(this);
+    }
+
+    @Override
+    protected void initializeNetworkLayer() {
+        DataBridgeInitializer.INSTANCE.initializeNetworkLayer(this);
+    }
+
+    @Override
+    protected void initializeCacheLayer() {
+        DataBridgeInitializer.INSTANCE.initializeCacheLayer(this);
+    }
+
+    @Override
     protected void onDependencyManagementInitialized() {
         super.onDependencyManagementInitialized();
 
-        // initialize here presentation/view layers
+        // initialize here presentation/view layers if necessary
     }
 
     private @NonNull ApplicationComponent buildAppComponent(BusinessComponent businessComponent) {
