@@ -27,7 +27,7 @@ Listed below, a quick description of each module and a class diagram with their 
 The following diagram illustrates the above mentioned modules relationships in this sample project.
 In order to support feature modules and (if properly configured) _Instant Apps_, the project's view/presentation layer is split into three modules; this is not a requirement and it can be avoided for small projects.
 
-![](docs/clean_app_architecture_v2.png)
+![](docs/clean_app_architecture_v2.1.png)
 
 ### Modules description
 
