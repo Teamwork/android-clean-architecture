@@ -1,12 +1,12 @@
 [![Build Status](https://app.bitrise.io/app/f4515a5c1a063849/status.svg?token=-SdbHgFYqsRzNe9OhOwk3g&branch=master)](https://app.bitrise.io/app/f4515a5c1a063849)
 
 # Clean Architecture on Android: the Teamwork.com way!
-The purpose of this repository is to showcase, with a very simple (but hopefully clear) sample *Android* project, how we have implemented Uncle Bob's [Clean Architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html) in our applications.
+The purpose of this repository is to showcase, with a very simple (but hopefully clear) sample Android project, how we implement Uncle Bob's [Clean Architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html) in our applications.
 
 Given that broad nature of the topic and the amount of implementation details necessary to implement a working production project, we have simplified our example as much as possible and focused solely on the following areas:
 - **Module structure:** each architecture layer has its own module, following closely the _Clean_ principles and naming.
 - **Separation of layers**: how to configure Gradle making use of `api`/`implementation` to hide unwanted dependencies
-- **Dependency Injection:** how to set up *Dagger 2* for a multi-module environment, but still ensuring the above point
+- **Dependency Injection:** how to set up *Dagger 2* for a multi-module environment, but still ensuring the above points
 
 ## Our requirements
 There is no such thing as *"the best architecture"* when it comes to mobile applications: the best architecture approach for a project (or team) always depends on a series of factors and assumptions.
@@ -33,14 +33,14 @@ In order to support feature modules and (if properly configured) _Instant Apps_,
 
 Module | Description | Module dependencies (direct or indirect)
 ------------- | ----------- | --------------------------
-**-entity** | Business entities (the `Entity` layer in _Clean_) | _No dependencies_
-**-data-bridge** | "Bridge" module only used for the initialization of the `Data` layer. Prevents implementation details in the data layer from being accessible in the app module. | `data`, `data-access`, `entity`
-**-data-access** | The `Data Access` layer, interfaces for the business layer to access the data layer | `entity`
-**-data** | The `Data ` layer, which includes networking, caching and data delivery for the business layer to manipulate. Exposes via Dagger the `DataRepo` dependencies to the business layer | `data-access`, `entity`
-**-business** | Business layer, contains interactors and business logic (which can then exposed to the presentation layer if necessary). | `data-access`, `entity`
-**-app-core** | Core, base module for the view and presentation layer. Contains themes, styles, resources, strings and components that are used across apps and feature modules. | `business`, `entity`
-**-app-feature1** | View and presentation module for a "big" feature. This can be then extracted to use with _Instant Apps_ if desired | `app-core`, `business`, `entity`
-**-app** | View and presentation layers for the _application module_ | `app-core`, `app-feature1`, `business`, `entity`, `data-bridge`
+**entity** | Business entities (the `Entity` layer in _Clean_) | _No dependencies_
+**data-bridge** | "Bridge" module only used for the initialization of the `Data` layer. Prevents implementation details in the data layer from being accessible in the app module. | `data`, `data-access`, `entity`
+**data-access** | The `Data Access` layer, interfaces for the business layer to access the data layer | `entity`
+**data** | The `Data ` layer, which includes networking, caching and data delivery for the business layer to manipulate. Exposes via Dagger the `DataRepo` dependencies to the business layer | `data-access`, `entity`
+**business** | Business layer, contains interactors and business logic (which can then exposed to the presentation layer if necessary). | `data-access`, `entity`
+**app-core** | Core, base module for the view and presentation layer. Contains themes, styles, resources, strings and components that are used across apps and feature modules. | `business`, `entity`
+**app-feature1** | View and presentation module for a "big" feature. This can be then extracted to use with _Instant Apps_ if desired | `app-core`, `business`, `entity`
+**app** | View and presentation layers for the _application module_ | `app-core`, `app-feature1`, `business`, `entity`, `data-bridge`
 
 ## Google Android Architecture Samples
 Google has done a very good job at producing a set of code examples in their [Android Architecture Blueprints](https://github.com/android/architecture-samples) repository.
@@ -57,6 +57,8 @@ the modules at lower layers do not have access at compile time to the higher lay
 
 Any exception to this rule must be explicitly declared and made available through a provision method in a public *component*. 
 Dagger doesn't work well with this kind of requirement out of the box when using _Subcomponents_, since it needs to have access at compile time to all of the implementation classes to build the dependency graph (which is what we want to avoid in the first place).
+
+The sample project doesn't cover other useful _Dagger_ features such scopes and "feature" components; however, both can be easily plugged into our core project structure.
 
 ### Components relationships
 The following diagram illustrates the dependencies between components in our sample project.
@@ -139,6 +141,8 @@ The `data-bridge` only purpose is to temporarily "break" the dependency inversio
 Once all the Dagger dependency graphs are created, the application can then move on to the rest of its initialization process.
 
 ### Dependency Injection: example
+**Note:** this section is intentionally verbose and requires you to go through the code while reading. You can probably skip it if you are already familiar with _Dagger_.
+
 We have three separate public Dagger `Component`s in our codebase: `ApplicationComponent` (view/presentation layer), `BusinessComponent` and `DataAccessComponent`.
 These are declared in the corresponding layer's module to make sure that the Dagger annotation processor and compiler have access to all the required dependencies from the generated provider classes.
 
@@ -156,7 +160,7 @@ Let's take our `Feature2DetailsPresenter` example and follow its dependencies fr
 - The bound implementation `Feature2DetailsInteractorImpl` has dependencies from the data access layer: `Entity1Repo` is one of those
 - `Feature2DetailsInteractorImpl` also requires `InternalInteractor`, which is bound in `InteractorsBindingModule`, but *not* exposed in `BusinessComponent` (but available in `InternalBusinessComponent`)
 
-#### Data Access / Data (Bridge) layer
+#### Data (Access) layers
 - The Dagger component `DataComponent` extends from the `DataAccessComponent`: all the provision methods for data access layer classes which are needed in the business layer are available here
 - `DataAccessComponent` exposes the needed provision method: `entity1Repo(): Entity1Repo`
 - `SampleDataComponent` includes `DataRepoBindingModule`, which, finally, contains the binding method which provides an instance of `Entity1RepoImpl` for the `Entity1Repo` interface
