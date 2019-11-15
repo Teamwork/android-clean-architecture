@@ -9,6 +9,8 @@ import com.teamwork.android.samples.clean.entity.feature1.Entity1List
 @AnyThread
 interface Entity1Repo : DataRepo {
 
+    fun initialize()
+
     fun getEntity1(id: Long): DataRequest<Entity1>
 
     fun getEntity1List(): DataRequest<Entity1List>

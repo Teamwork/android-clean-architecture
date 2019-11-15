@@ -22,7 +22,7 @@ class SampleActivity : AppCompatActivity(), Feature1ListView, Feature1DetailsVie
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        SampleApplication.getAppComponent().inject(this)
+        SampleApplication.appComponent.inject(this)
 
         setContentView(R.layout.activity_sample)
         setSupportActionBar(toolbar)

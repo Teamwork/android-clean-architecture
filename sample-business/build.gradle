@@ -6,6 +6,10 @@ android {
     compileSdkVersion project.ext.sharedCompileSdkVersion
     buildToolsVersion project.ext.sharedBuildToolsVersion
 
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
     defaultConfig {
         minSdkVersion project.ext.sharedMinSdkVersion
         targetSdkVersion project.ext.sharedTargetSdkVersion
@@ -43,7 +47,6 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
 
     // internal dependencies
-    implementation project(':sample-business-injection')
     implementation project(':sample-data-access')
     api project(':sample-entity')
 

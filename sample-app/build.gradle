@@ -7,6 +7,10 @@ android {
     compileSdkVersion project.ext.sharedCompileSdkVersion
     buildToolsVersion project.ext.sharedBuildToolsVersion
 
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
     defaultConfig {
         applicationId "com.teamwork.android.samples.clean"
 
@@ -47,6 +51,7 @@ dependencies {
     // internal dependencies
     implementation project(':sample-app-core')
     implementation project(':sample-app-feature1')
+    implementation project(':sample-data-bridge') // for initialization only
 
     // unit test dependencies
     testImplementation "junit:junit:${versions.junit}"

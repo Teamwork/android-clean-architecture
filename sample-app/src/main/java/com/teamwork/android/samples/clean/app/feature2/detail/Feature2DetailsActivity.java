@@ -16,7 +16,7 @@ public class Feature2DetailsActivity extends AppCompatActivity implements Featur
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        SampleApplication.getAppComponent().inject(this);
+        SampleApplication.Companion.getAppComponent().inject(this);
 
         setContentView(R.layout.activity_feature2_details);
         presenter.onViewCreated(this);

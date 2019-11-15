@@ -16,6 +16,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
  * used as a demonstration of a more complex real implementation.
  */
 @UiThread
+@SuppressWarnings("WeakerAccess")
 @ParametersAreNonnullByDefault
 public class BasePresenter<V> {
 
