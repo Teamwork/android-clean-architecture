@@ -9,7 +9,7 @@ import com.teamwork.android.samples.clean.data.access.feature1.Entity1Repo
 import com.teamwork.android.samples.clean.entity.feature1.Entity1
 import javax.inject.Inject
 
-class Feature1DetailsInteractorImpl
+internal class Feature1DetailsInteractorImpl
 @Inject constructor(
         private val context: Context,
         private val entity1Repo: Entity1Repo

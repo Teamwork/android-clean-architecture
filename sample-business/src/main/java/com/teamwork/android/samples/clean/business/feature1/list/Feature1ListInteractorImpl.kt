@@ -11,7 +11,7 @@ import java.util.concurrent.ExecutorService
 import javax.inject.Inject
 import javax.inject.Named
 
-class Feature1ListInteractorImpl
+internal class Feature1ListInteractorImpl
 @Inject constructor(
         private val entity1Repo: Entity1Repo,
 

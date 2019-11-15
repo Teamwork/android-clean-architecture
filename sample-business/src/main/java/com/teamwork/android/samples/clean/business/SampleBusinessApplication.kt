@@ -68,7 +68,6 @@ abstract class SampleBusinessApplication : Application() {
 
     @CallSuper
     protected open fun onDependencyManagementInitialized() {
-        initializeLayers()
     }
 
     @CallSuper

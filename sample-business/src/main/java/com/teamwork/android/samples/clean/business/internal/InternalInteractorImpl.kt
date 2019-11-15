@@ -16,4 +16,5 @@ internal class InternalInteractorImpl
 ) : BaseInteractor<Entity2, Interactor.Callback<Entity2>>(), InternalInteractor {
 
     override fun initialize() {} // does initialization stuff!
+
 }
