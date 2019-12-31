@@ -39,6 +39,11 @@ android {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
 
+
+    // internal dependencies
+    implementation project(':sample-data-access')
+
+
     // third party dependencies
 
     // Dagger for Dependency Injection
@@ -55,9 +60,6 @@ dependencies {
     implementation "com.squareup.moshi:moshi:${versions.moshi}"
     implementation("com.squareup.moshi:moshi-kotlin:${versions.moshi}")
 
-    // internal dependencies
-    api project(':sample-entity')
-    implementation project(':sample-data-access')
 
     // unit test dependencies
     testImplementation "junit:junit:${versions.junit}"
