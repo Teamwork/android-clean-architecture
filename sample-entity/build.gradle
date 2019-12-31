@@ -1,40 +1,7 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin'
 
-android {
-    compileSdkVersion project.ext.sharedCompileSdkVersion
-    buildToolsVersion project.ext.sharedBuildToolsVersion
-
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
-
-    defaultConfig {
-        minSdkVersion project.ext.sharedMinSdkVersion
-        targetSdkVersion project.ext.sharedTargetSdkVersion
-        versionCode project.ext.appVersionCode
-        versionName project.ext.appVersionName
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
-
-    buildTypes {
-        debug {
-            minifyEnabled false
-            multiDexEnabled true
-        }
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-}
+sourceCompatibility = "8"
+targetCompatibility = "8"
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
@@ -44,7 +11,6 @@ dependencies {
     // use Inject (and other useful annotations) without the need for the Dagger dependency
     api "javax.inject:javax.inject:1"
     api "com.google.code.findbugs:jsr305:${versions.jsrAnnotations}"
-    api "com.android.support:support-annotations:${versions.supportLibrary}"
 
     // unit test dependencies
     testImplementation "junit:junit:${versions.junit}"

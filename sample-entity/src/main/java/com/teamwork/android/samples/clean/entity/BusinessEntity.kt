@@ -8,5 +8,4 @@ package com.teamwork.android.samples.clean.entity
  * Entities should not load data, nor be provided with framework implementations, application-specific rules or
  * presentation details.
  */
-interface BusinessEntity {
-}
+interface BusinessEntity
