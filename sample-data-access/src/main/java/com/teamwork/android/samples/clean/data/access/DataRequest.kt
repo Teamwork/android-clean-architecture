@@ -1,7 +1,7 @@
 package com.teamwork.android.samples.clean.data.access
 
-import android.support.annotation.AnyThread
-import android.support.annotation.WorkerThread
+import androidx.annotation.AnyThread
+import androidx.annotation.WorkerThread
 import com.teamwork.android.samples.clean.entity.BusinessEntity
 import java.io.IOException
 

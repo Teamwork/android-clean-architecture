@@ -37,7 +37,6 @@ ext {
     versions = [
             // production dependencies
             butterknife     : '10.2.0',
-            constraintLayout: '1.1.3',
             dagger          : '2.25.2',
             jsrAnnotations  : '3.0.2',
             moshi           : '1.8.0',
@@ -46,8 +45,37 @@ ext {
             room            : '1.1.1',
             rxandroid       : '2.1.0',
             rxjava          : '2.2.2',
-            supportLibrary  : '28.0.0',
             timber          : '4.7.1',
+
+            // AndroidX - https://developer.android.com/jetpack/androidx/versions
+            androidx          : [
+                    annotation            : '1.1.0',
+                    appCompat             : '1.1.0',
+                    archCoreRuntime       : '2.0.1',
+                    cardview              : '1.0.0',
+                    constraintLayout      : '1.1.3',
+                    core                  : '1.1.0',
+                    coreUtils             : '1.0.0',
+                    espressoCore          : '3.1.0',
+                    fragment              : '1.0.0',
+                    legacyPreferenceV14   : '1.0.0',
+                    lifecycleCompiler     : '2.0.0',
+                    lifecycleExtensions   : '2.0.0',
+                    lifecycleRuntime      : '2.0.0',
+                    material              : '1.0.0',
+                    media                 : '1.0.1',
+                    palette               : '1.0.0',
+                    supportCoreUi         : '1.0.0',
+                    supportV4             : '1.0.0',
+                    recyclerview          : '1.0.0',
+                    room                  : '2.2.0',
+                    vectordrawableAnimated: '1.1.0',
+
+                    // AndroidX test dependencies
+                    roomTesting           : '2.2.0',
+                    test                  : '1.2.0',
+                    testExt               : '1.1.1'
+            ],
 
             // Test dependencies
             espressoCore    : '3.0.2',

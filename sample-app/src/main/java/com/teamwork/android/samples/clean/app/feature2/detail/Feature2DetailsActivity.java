@@ -1,7 +1,7 @@
 package com.teamwork.android.samples.clean.app.feature2.detail;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import com.teamwork.android.samples.clean.app.R;
 import com.teamwork.android.samples.clean.app.SampleApplication;
 

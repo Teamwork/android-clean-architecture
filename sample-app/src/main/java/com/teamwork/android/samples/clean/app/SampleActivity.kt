@@ -1,9 +1,9 @@
 package com.teamwork.android.samples.clean.app
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import com.teamwork.android.samples.clean.feature1.detail.Feature1DetailsPresenter
 import com.teamwork.android.samples.clean.feature1.detail.Feature1DetailsView
 import com.teamwork.android.samples.clean.feature1.list.Feature1ListPresenter

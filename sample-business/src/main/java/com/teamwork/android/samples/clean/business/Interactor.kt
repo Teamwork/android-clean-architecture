@@ -1,6 +1,6 @@
 package com.teamwork.android.samples.clean.business
 
-import android.support.annotation.MainThread
+import androidx.annotation.MainThread
 import com.teamwork.android.samples.clean.entity.BusinessEntity
 
 /**
