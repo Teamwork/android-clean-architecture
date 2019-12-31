@@ -58,9 +58,10 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:${versions.okhttp}"
     implementation "com.squareup.okhttp3:logging-interceptor:${versions.okhttp}"
     implementation "com.squareup.moshi:moshi:${versions.moshi}"
-    implementation("com.squareup.moshi:moshi-kotlin:${versions.moshi}")
+    implementation "com.squareup.moshi:moshi-kotlin:${versions.moshi}"
 
 
     // unit test dependencies
     testImplementation "junit:junit:${versions.junit}"
+
 }
