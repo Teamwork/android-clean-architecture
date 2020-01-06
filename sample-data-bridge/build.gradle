@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion project.ext.sharedCompileSdkVersion
@@ -26,7 +25,6 @@ android {
         }
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 
@@ -39,14 +37,13 @@ android {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
 
-    // third party dependencies
-
 
     // internal dependencies
 
+    // non-transitive dependencies so that any `sample-data` dependencies won't be available in app module
     implementation project(':sample-data-access')
-    // non-transitive dependency so that any sample-data dependencies won't be available in sample-business
     implementation project(':sample-data')
+
 
     // unit test dependencies
     testImplementation "junit:junit:${versions.junit}"

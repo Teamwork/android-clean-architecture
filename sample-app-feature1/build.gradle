@@ -41,8 +41,10 @@ android {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
 
+
     // internal dependencies
     implementation project(':sample-app-core')
+
 
     // unit test dependencies
     implementation "com.android.support.constraint:constraint-layout:${versions.constraintLayout}"
@@ -54,4 +56,5 @@ dependencies {
     androidTestImplementation "com.android.support.test.espresso:espresso-core:${versions.espressoCore}"
     androidTestImplementation "junit:junit:${versions.junit}"
     androidTestImplementation "org.mockito:mockito-android:${versions.mockito}"
+
 }

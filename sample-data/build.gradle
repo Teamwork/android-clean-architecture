@@ -39,10 +39,15 @@ android {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
 
+
+    // internal dependencies
+    implementation project(':sample-data-access')
+
+
     // third party dependencies
 
     // Dagger for Dependency Injection
-    api "com.google.dagger:dagger:${versions.dagger}"
+    implementation "com.google.dagger:dagger:${versions.dagger}"
     kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
 
     /*
@@ -53,12 +58,10 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:${versions.okhttp}"
     implementation "com.squareup.okhttp3:logging-interceptor:${versions.okhttp}"
     implementation "com.squareup.moshi:moshi:${versions.moshi}"
-    implementation("com.squareup.moshi:moshi-kotlin:${versions.moshi}")
+    implementation "com.squareup.moshi:moshi-kotlin:${versions.moshi}"
 
-    // internal dependencies
-    api project(':sample-entity')
-    implementation project(':sample-data-access')
 
     // unit test dependencies
     testImplementation "junit:junit:${versions.junit}"
+
 }

@@ -41,17 +41,22 @@ android {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
 
-    // third party dependencies
-
-    // Dagger for Dependency Injection
-    implementation "com.google.dagger:dagger:${versions.dagger}"
-    implementation "com.android.support.constraint:constraint-layout:${versions.constraintLayout}"
-    kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
 
     // internal dependencies
+
     implementation project(':sample-app-core')
     implementation project(':sample-app-feature1')
     implementation project(':sample-data-bridge') // for initialization only
+
+
+    // third party dependencies
+
+    implementation "com.android.support.constraint:constraint-layout:${versions.constraintLayout}"
+
+    // Dagger for Dependency Injection
+    implementation "com.google.dagger:dagger:${versions.dagger}"
+    kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
+
 
     // unit test dependencies
     testImplementation "junit:junit:${versions.junit}"
@@ -63,4 +68,5 @@ dependencies {
     androidTestImplementation "com.android.support.test.espresso:espresso-core:${versions.espressoCore}"
     androidTestImplementation "junit:junit:${versions.junit}"
     androidTestImplementation "org.mockito:mockito-android:${versions.mockito}"
+
 }
