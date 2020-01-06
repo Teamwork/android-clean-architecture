@@ -17,7 +17,7 @@ android {
         versionCode project.ext.appVersionCode
         versionName project.ext.appVersionName
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -47,20 +47,20 @@ dependencies {
 
 
     // third party dependencies
-    api "com.android.support:support-annotations:${versions.supportLibrary}"
-    api "com.android.support:appcompat-v7:${versions.supportLibrary}"
-    api "com.android.support:design:${versions.supportLibrary}"
-    api "com.android.support.constraint:constraint-layout:${versions.constraintLayout}"
+    api "androidx.annotation:annotation:${versions.androidx.annotation}"
+    api "androidx.appcompat:appcompat:${versions.androidx.appCompat}"
+    api "com.google.android.material:material:${versions.androidx.material}"
+    implementation "androidx.constraintlayout:constraintlayout:${versions.androidx.constraintLayout}"
 
 
     // unit test dependencies
     testImplementation "junit:junit:${versions.junit}"
 
     // android instrumentation test dependencies
-    androidTestImplementation "com.android.support:support-annotations:${versions.supportLibrary}"
-    androidTestImplementation "com.android.support.test:runner:${versions.supportTest}"
-    androidTestImplementation "com.android.support.test:rules:${versions.supportTest}"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:${versions.espressoCore}"
+    androidTestImplementation "androidx.test:runner:${versions.androidx.test}"
+    androidTestImplementation "androidx.test:rules:${versions.androidx.test}"
+    androidTestImplementation "androidx.test.ext:junit:${versions.androidx.testExt}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${versions.androidx.espressoCore}"
     androidTestImplementation "junit:junit:${versions.junit}"
     androidTestImplementation "org.mockito:mockito-android:${versions.mockito}"
 }

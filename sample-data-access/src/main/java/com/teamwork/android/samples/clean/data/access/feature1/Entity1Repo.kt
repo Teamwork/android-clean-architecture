@@ -1,6 +1,6 @@
 package com.teamwork.android.samples.clean.data.access.feature1
 
-import android.support.annotation.AnyThread
+import androidx.annotation.AnyThread
 import com.teamwork.android.samples.clean.data.access.DataRepo
 import com.teamwork.android.samples.clean.data.access.DataRequest
 import com.teamwork.android.samples.clean.entity.feature1.Entity1

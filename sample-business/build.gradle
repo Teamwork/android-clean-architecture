@@ -16,7 +16,7 @@ android {
         versionCode project.ext.appVersionCode
         versionName project.ext.appVersionName
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -46,8 +46,8 @@ dependencies {
 
 
     // third party dependencies
-    api "com.android.support:appcompat-v7:${versions.supportLibrary}"
-    api "com.android.support:support-annotations:${versions.supportLibrary}"
+    api "androidx.appcompat:appcompat:${versions.androidx.appCompat}"
+    api "androidx.annotation:annotation:${versions.androidx.annotation}"
 
     // Dagger for Dependency Injection
     implementation "com.google.dagger:dagger:${versions.dagger}"

@@ -3,7 +3,7 @@
 package com.teamwork.android.samples.clean.business
 
 import android.app.Application
-import android.support.annotation.CallSuper
+import androidx.annotation.CallSuper
 
 import com.teamwork.android.samples.clean.business.injection.BusinessComponent
 import com.teamwork.android.samples.clean.business.injection.BusinessLayerInitializer

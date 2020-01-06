@@ -1,6 +1,6 @@
 package com.teamwork.android.samples.clean.data.access
 
-import android.support.annotation.AnyThread
+import androidx.annotation.AnyThread
 
 /**
  * Mock, empty interface for "Repository" components.
