@@ -17,10 +17,10 @@ internal object DataRepoBindingModule {
 
     @Provides
     @Singleton
-    fun projectsPeopleRepo(repo: Entity1RepoImpl): Entity1Repo = repo
+    fun entity1Repo(repo: Entity1RepoImpl): Entity1Repo = repo
 
     @Provides
     @Singleton
-    fun taskListsRepo(repo: Entity2RepoImpl): Entity2Repo = repo
+    fun entity2Repo(repo: Entity2RepoImpl): Entity2Repo = repo
 
 }

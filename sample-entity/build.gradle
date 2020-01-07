@@ -3,7 +3,18 @@ apply plugin: 'kotlin'
 sourceCompatibility = "8"
 targetCompatibility = "8"
 
+buildscript {
+
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
 dependencies {
+    //noinspection DifferentStdlibGradleVersion - false positive
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
 
 
