@@ -1,2 +1,2 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.teamwork.android.samples.business.injection" />
+    package="com.teamwork.android.samples.data.bridge" />
